@@ -99,33 +99,6 @@ class CameraApp(QtWidgets.QMainWindow):
                 QtWidgets.QMessageBox.critical(self, "Lỗi", "Đã xảy ra lỗi trong quá trình ghi vào Excel.")
         else:
             QtWidgets.QMessageBox.warning(self, "Lỗi", "Chưa chọn ngày. Vui lòng chọn ngày từ QDateEdit.")
-
-    # def toggle_camera(self):
-    #     if not self.excel_file:
-    #         QtWidgets.QMessageBox.warning(self, "Lỗi", "Chưa chọn file Excel.")
-    #         return 
-    #     camera_index = self.ID_Edit.toPlainText().strip() 
-    
-    #     try: 
-    #         camera_index = int(camera_index)
-    #     except ValueError: 
-    #         QtWidgets.QMessageBox.warning(self, "Lỗi", "Giá trị ID không hợp lệ")
-    #         return
-        
-    #     if self.video_capture is None: 
-    #         self.video_capture = cv2.VideoCapture(camera_index) 
-    #         if not self.video_capture.isOpened():
-    #             print("Không thể mở camera")
-    #             return
-    #         self.btnStartStop.setText("Tắt Camera") 
-    #         self.timer.start(20) 
-    #     else: 
-    #         self.timer.stop()  
-    #         self.video_capture.release()
-    #         self.Label_Camera.clear()  
-    #         self.video_capture = None 
-    #         self.btnStartStop.setText("Bật Camera") 
-    
     
     def toggle_camera(self):
         if not self.excel_file:
