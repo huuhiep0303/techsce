@@ -100,20 +100,40 @@ class CameraApp(QtWidgets.QMainWindow):
         else:
             QtWidgets.QMessageBox.warning(self, "Lỗi", "Chưa chọn ngày. Vui lòng chọn ngày từ QDateEdit.")
 
+    # def toggle_camera(self):
+    #     if not self.excel_file:
+    #         QtWidgets.QMessageBox.warning(self, "Lỗi", "Chưa chọn file Excel.")
+    #         return 
+    #     camera_index = self.ID_Edit.toPlainText().strip() 
+    
+    #     try: 
+    #         camera_index = int(camera_index)
+    #     except ValueError: 
+    #         QtWidgets.QMessageBox.warning(self, "Lỗi", "Giá trị ID không hợp lệ")
+    #         return
+        
+    #     if self.video_capture is None: 
+    #         self.video_capture = cv2.VideoCapture(camera_index) 
+    #         if not self.video_capture.isOpened():
+    #             print("Không thể mở camera")
+    #             return
+    #         self.btnStartStop.setText("Tắt Camera") 
+    #         self.timer.start(20) 
+    #     else: 
+    #         self.timer.stop()  
+    #         self.video_capture.release()
+    #         self.Label_Camera.clear()  
+    #         self.video_capture = None 
+    #         self.btnStartStop.setText("Bật Camera") 
+    
+    
     def toggle_camera(self):
         if not self.excel_file:
             QtWidgets.QMessageBox.warning(self, "Lỗi", "Chưa chọn file Excel.")
             return 
-        camera_index = self.ID_Edit.toPlainText().strip() 
     
-        try: 
-            camera_index = int(camera_index)
-        except ValueError: 
-            QtWidgets.QMessageBox.warning(self, "Lỗi", "Giá trị ID không hợp lệ")
-            return
-        
         if self.video_capture is None: 
-            self.video_capture = cv2.VideoCapture(camera_index) 
+            self.video_capture = cv2.VideoCapture(0) 
             if not self.video_capture.isOpened():
                 print("Không thể mở camera")
                 return
@@ -311,7 +331,7 @@ class CameraApp(QtWidgets.QMainWindow):
     
     def load_parent_phonenumbers(self):
         self.parent_phonenumbers = {}
-        wb = openpyxl.load_workbook('D:\KHKT_12_FINALLY\KHKT_12_FINAL\EXCEL\parent_phonenumbers.xlsx')
+        wb = openpyxl.load_workbook(r'D:\KHKT_12_FINALLY\KHKT_12_FINAL\EXCEL\parent_phonenumbers.xlsx')
         sheet = wb.active
         for row in sheet.iter_rows(min_row=2, values_only=True):
             student_name, phone_number = row

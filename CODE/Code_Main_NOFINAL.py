@@ -576,7 +576,7 @@ class CameraApp(QtWidgets.QMainWindow):
     
     def load_parent_phonenumbers(self):
         self.parent_phonenumbers = {}
-        wb = openpyxl.load_workbook('D:\KHKT_12_FINALLY\KHKT_12_FINAL\EXCEL\parent_phonenumbers.xlsx')
+        wb = openpyxl.load_workbook(r'D:\KHKT_12_FINALLY\KHKT_12_FINAL\EXCEL\parent_phonenumbers.xlsx')
         sheet = wb.active
         for row in sheet.iter_rows(min_row=2, values_only=True):
             student_name, phone_number = row
